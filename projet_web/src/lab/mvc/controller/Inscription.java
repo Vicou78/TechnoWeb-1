@@ -24,8 +24,8 @@ public class Inscription extends HttpServlet {
         String pass2 = request.getParameter("password2");
         HttpSession session = request.getSession();
         if(pass1.equals(pass2)) {
-        	Authentication.Inscription(name,prenom,mail,user, pass1);
-        	getServletContext().getRequestDispatcher("/home.html").forward(request, response);
+        	Authentication.Inscription(request,name,prenom,mail,user, pass1);
+        	getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
        	 session.setAttribute("session", "on");
         }
 

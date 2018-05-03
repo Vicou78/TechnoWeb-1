@@ -12,6 +12,7 @@ import java.util.Scanner;
 import javax.servlet.http.HttpServletRequest;
 
 import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 import com.mysql.jdbc.Statement;
 
 public class Authentication implements Serializable{
@@ -23,6 +24,26 @@ public class Authentication implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
+	
+	/*
+	 * CONNEXION A LA BASE DE DONNEES
+	 * */
+	
+	  public static String url = "jdbc:mysql://localhost:3306/site";
+	  public static String utilisateur = "root";
+	  public static	 String motDePasse = "jenk1000";
+	  public static Connection connexion2 = null;
+	  public static Statement statement2 = null;
+	  public static ResultSet resultat = null;
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  
 	   public static boolean Authentic( HttpServletRequest request, String user,String pass) {
 		    /* Chargement du driver JDBC pour MySQL */
 		    try {
@@ -33,13 +54,7 @@ public class Authentication implements Serializable{
 		                e.getMessage();
 		    }
 
-		    /* Connexion à la base de données */
-		    String url = "jdbc:mysql://localhost:3306/site";
-		 String utilisateur = "root";
-			 String motDePasse = "jenk1000";
-	    Connection connexion2 = null;
-	    Statement statement2 = null;
-	    ResultSet resultat = null;
+
 		    try {
 
 		        connexion2 = (Connection) DriverManager.getConnection( url, utilisateur, motDePasse );
@@ -63,6 +78,66 @@ public class Authentication implements Serializable{
 		           
 		        
 		    }} catch ( SQLException e ) {
+		      
+		    } finally {
+
+		        if ( resultat != null ) {
+		            try {
+		                resultat.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( statement2 != null ) {
+		            try {
+		                statement2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( connexion2 != null ) {
+		            try {
+		                connexion2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+		    }
+
+		    return false;
+		}
+	   public static boolean Inscription( HttpServletRequest request,String name,String prenom,String mail,String user,String pass1) {
+		    /* Chargement du driver JDBC pour MySQL */
+		    try {
+
+		        Class.forName( "com.mysql.jdbc.Driver" );
+
+		    } catch ( ClassNotFoundException e ) {
+		                e.getMessage();
+		    }
+
+
+		    try {
+
+		    	 connexion2 = (Connection) DriverManager.getConnection( url, utilisateur, motDePasse );
+
+			        /* Création de l'objet gérant les requêtes */
+			        statement2 = (Statement) connexion2.createStatement();
+
+			        String req = " insert into utilisateur (nom,prenom,mail,username,password)"
+			                + " values (?, ?, ?, ?, ?)";
+			        PreparedStatement preparedStmt = (PreparedStatement) connexion2.prepareStatement(req);
+			        preparedStmt.setString   (1, name);
+			        preparedStmt.setString   (2, prenom);
+			        preparedStmt.setString   (3, mail);
+			        preparedStmt.setString   (4, user);
+			        preparedStmt.setString   (5, pass1);
+
+			        // execute the java preparedstatement
+			        preparedStmt.executeUpdate();
+
+		           
+		        
+		    } catch ( SQLException e ) {
 		      
 		    } finally {
 

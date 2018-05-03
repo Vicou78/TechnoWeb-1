@@ -147,7 +147,7 @@
 			    </div>
 			  </div>
 			</div>
-			<!-- FIN MODAL -->
+			<!-- FIN MODAL et ta mère  -->
 		</div>
 		<footer style="background-color:rgb(231, 231, 231);width:100%">
 		<p>Futur footer </p>

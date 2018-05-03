@@ -163,7 +163,7 @@ if (erreur != null) { %>
 			    </div>
 			  </div>
 			</div>
-			<!-- FIN MODAL et ta mère  -->
+			<!-- FIN MODAL this is the end of the modal -->
 		</div>
 		<footer style="background-color:rgb(231, 231, 231);width:100%">
 		<p>Futur footer </p>

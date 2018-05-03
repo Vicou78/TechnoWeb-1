@@ -35,10 +35,9 @@ public class Login extends HttpServlet {
         String pass = request.getParameter("password");
         HttpSession session = request.getSession();
         boolean reserv=Authentication.Authentic(request, user,pass);
-        List<String> reserv2=Authentication.executerTests(request, user,pass);
         if(reserv) {
         	System.out.println("boucle");
-        	getServletContext().getRequestDispatcher("/home.html").forward(request, response);
+        	getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
         	 session.setAttribute("session", "on");
         }
         else {

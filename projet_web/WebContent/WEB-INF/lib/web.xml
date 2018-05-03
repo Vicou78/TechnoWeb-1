@@ -13,4 +13,12 @@
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/Connexion</url-pattern>
 	</servlet-mapping>
+		<servlet>
+		<servlet-name>Inscription</servlet-name>
+		<servlet-class>lab.mvc.controller.Inscription</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Inscription</servlet-name>
+		<url-pattern>/Inscrire</url-pattern>
+	</servlet-mapping>
 	</web-app>

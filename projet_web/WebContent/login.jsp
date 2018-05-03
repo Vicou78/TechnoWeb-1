@@ -20,6 +20,20 @@
 	</style>
 </head>
 <body style="background:url('architect.jpg') fixed no-repeat">
+			  <%
+
+// Récupération du message d'erreur
+
+String erreur = (String) request.getAttribute("erreur");
+
+// Affichage du message s'il existe
+
+if (erreur != null) { %>
+
+<strong>Erreur, les identifiants ne sont pas corrects </strong>
+
+<%
+} %>
 <nav class="navbar navbar-default">   
 		<div class="container">
 			<div class="navbar-header">   
@@ -62,29 +76,31 @@
 			<!-- MODAL -->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			  <div class="modal-dialog" role="document">
+
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			        <h4 class="modal-title" id="myModalLabel" style="text-align:center;">SIGN UP</h4>
 			      </div>
 			      <div class="modal-body">
-			        <form action="POST" action = "blabla">
+			        <form method="POST" action = "Inscrire">
+			        
 			        <div class="col-sm-12" style="padding:0;margin-bottom:10px;">
 				        <div class="col-sm-offset-1 col-sm-2">Nom:
 				        </div>
-				        <div class=" col-sm-8 col-sm-offset-1" style="margin-left:0px;"><input name="username" type="text" style="width:100%;">
+				        <div class=" col-sm-8 col-sm-offset-1" style="margin-left:0px;"><input name="name" type="text" style="width:100%;">
 				        </div>
 				    </div>
 				    <div class="col-sm-12" style="padding:0;margin-bottom:10px;">
 				        <div class="col-sm-offset-1 col-sm-2">Prénom:
 				        </div>
-				        <div class=" col-sm-8 col-sm-offset-1" style="margin-left:0px;"><input name="username" type="text" style="width:100%;">
+				        <div class=" col-sm-8 col-sm-offset-1" style="margin-left:0px;"><input name="prenom" type="text" style="width:100%;">
 				        </div>
 				    </div>
 				    <div class="col-sm-12" style="padding:0;margin-bottom:10px;">
 				        <div class="col-sm-offset-1 col-sm-2">E-mail:
 				        </div>
-				        <div class=" col-sm-8 col-sm-offset-1" style="margin-left:0px;"><input name="username" type="text" style="width:100%;">
+				        <div class=" col-sm-8 col-sm-offset-1" style="margin-left:0px;"><input name="mail" type="text" style="width:100%;">
 				        </div>
 				    </div>
 			        <div class="col-sm-12" style="padding:0;margin-bottom:10px;">
@@ -96,13 +112,13 @@
 			        <div class="col-sm-12" style="padding:0;margin-bottom:10px;">
 						<div class="col-sm-offset-1 col-sm-2">Password:
 				        </div>
-				        <div class=" col-sm-8 col-sm-offset-1" style="margin-left:0px;"><input name="password" type="text" style="width:100%;">
+				        <div class=" col-sm-8 col-sm-offset-1" style="margin-left:0px;"><input name="password1" type="text" style="width:100%;">
 				        </div>
 				    </div>
 				    <div class="col-sm-12" style="padding:0;margin-bottom:10px;">
 				        <div class="col-sm-offset-1 col-sm-2">Confirmation Password:
 				        </div>
-				        <div class=" col-sm-8 col-sm-offset-1" style="margin-left:0px;"><input name="username" type="text" style="width:100%;">
+				        <div class=" col-sm-8 col-sm-offset-1" style="margin-left:0px;"><input name="password2" type="text" style="width:100%;">
 				        </div>
 				    </div>
 					<p style="text-align:center;"><input type="submit"></p>

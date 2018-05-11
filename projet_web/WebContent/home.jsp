@@ -39,10 +39,16 @@
 		</div>
 		<div>
 		
-		
-		
+		<form>
+		Veuillez entrer un nom de ville à rechercher :
+		de : à:
+		dans la ville :
 			<input type="text" id="country" name="country"/>
-	
+			
+			      
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Chercher</button>
+			      
+	</form>
 	<script>
 		$("#country").autocomplete("getdata.jsp");
 	</script>

@@ -2,7 +2,7 @@
 <html style="height: 100%">
 <head>
 	
-	<title>Home</title>
+	<title>Profile</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	
@@ -48,7 +48,7 @@
 	</nav>
 	<div class="container">
 		<div class="col-md-12">
-			<h1 style="text-align:center;">Bienvenue sur notre joli site.</h1>
+			<h1 style="text-align:center;">Profil</h1>
 		</div>
 	</div>
 <footer style="background-color:rgb(231, 231, 231);width:100%">

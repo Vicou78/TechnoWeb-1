@@ -21,5 +21,12 @@
 		<servlet-name>Inscription</servlet-name>
 		<url-pattern>/Inscrire</url-pattern>
 	</servlet-mapping>
-
+	<servlet>
+		<servlet-name>Recherche</servlet-name>
+		<servlet-class>lab.mvc.controller.Recherche</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Recherche</servlet-name>
+		<url-pattern>/recherche</url-pattern>
+	</servlet-mapping>
 	</web-app>

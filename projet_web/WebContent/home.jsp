@@ -39,14 +39,17 @@
 		</div>
 		<div>
 		
-		<form>
+		<form action="recherche" name="recherche" method="post">
 		Veuillez entrer un nom de ville à rechercher :
-		de : à:
+		de :
+		<input type="date" name="depart">
+		 à:
+		 <input type="date" name="arrivee">
 		dans la ville :
 			<input type="text" id="country" name="country"/>
 			
 			      
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Chercher</button>
+			        <button type="submit" class="btn btn-default" data-dismiss="modal">Chercher</button>
 			      
 	</form>
 	<script>

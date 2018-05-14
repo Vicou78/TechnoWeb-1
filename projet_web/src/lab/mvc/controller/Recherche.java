@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lab.mvc.model.Maison;
-
 @WebServlet("/recherche")
 public class Recherche extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -33,10 +32,11 @@ public class Recherche extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/plain");
+        Maison maison = new Maison();
 		String depart = request.getParameter("depart");
         String arrivee = request.getParameter("arrivee");
         String ville = request.getParameter("country");
-        List<String> messages2 =Maison.Correspond(request, depart,arrivee,ville);
+        List<String> messages2 =maison.Correspond(request, depart,arrivee,ville);
         request.setAttribute( ATT_MESSAGES2, messages2 );
         System.out.println(messages2);
         this.getServletContext().getRequestDispatcher("/results_maison.jsp" ).forward( request, response );

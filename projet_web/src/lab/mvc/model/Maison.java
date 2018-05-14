@@ -89,8 +89,9 @@ public class Maison {
 
 		return messages;
 	}
-	public static List<String> Correspond(HttpServletRequest request, String depart,String arrivee,String ville) {
+	public List<String> Correspond(HttpServletRequest request, String depart,String arrivee,String ville) {
 		// TODO Auto-generated method stub
+
 		try {
 
 	        Class.forName( "com.mysql.jdbc.Driver" );
@@ -115,11 +116,10 @@ public class Maison {
 	        while ( resultat.next() ) {
 	        
 	        	String nom_maison=resultat.getString("nom_maison");
-	        	String description=resultat.getString("descrption");
+	        	String description=resultat.getString("description");
 	        	
-	        messages2.add("Une maison est disponible dans la ville "+ville+", son nom est"+nom_maison+"et voici sa desciption :"+description);}
+	        messages2.add("Une maison est disponible dans la ville "+ville+", son nom est "+nom_maison+"et voici sa desciption :"+description);}
 	           
-	        messages2.add("Une maison est disponible dans la ville ");
 	        } catch ( SQLException e ) {
 	      
 	    } finally {

@@ -21,4 +21,5 @@
 		<servlet-name>Inscription</servlet-name>
 		<url-pattern>/Inscrire</url-pattern>
 	</servlet-mapping>
+
 	</web-app>

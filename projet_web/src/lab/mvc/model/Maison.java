@@ -13,7 +13,7 @@ import com.mysql.jdbc.Statement;
 
 public class Maison {
 	   public static ArrayList<String> messages = new ArrayList<String>();
-	   public static ArrayList<String> messages2 = new ArrayList<String>();
+	
 	/**
 	 * 
 	 */
@@ -91,7 +91,7 @@ public class Maison {
 	}
 	public List<String> Correspond(HttpServletRequest request, String depart,String arrivee,String ville) {
 		// TODO Auto-generated method stub
-
+		 ArrayList<String> messages2 = new ArrayList<String>();
 		try {
 
 	        Class.forName( "com.mysql.jdbc.Driver" );
@@ -118,7 +118,7 @@ public class Maison {
 	        	String nom_maison=resultat.getString("nom_maison");
 	        	String description=resultat.getString("description");
 	        	
-	        messages2.add("Une maison est disponible dans la ville "+ville+", son nom est "+nom_maison+"et voici sa desciption :"+description);}
+	        messages2.add("Une maison est disponible dans la ville "+ville+", son nom est "+nom_maison+" et voici sa description :"+description);}
 	           
 	        } catch ( SQLException e ) {
 	      
@@ -147,5 +147,63 @@ public class Maison {
 	    }
 
 		return messages2;
+	}
+	public List<String> Cherche_id(HttpServletRequest request, String ville) {
+		// TODO Auto-generated method stub
+		 ArrayList<String> id_maison = new ArrayList<String>();
+			try {
+
+		        Class.forName( "com.mysql.jdbc.Driver" );
+
+		    } catch ( ClassNotFoundException e ) {
+		                e.getMessage();
+		    }
+
+
+		    try {
+
+		        connexion2 = (Connection) DriverManager.getConnection( url, utilisateur, motDePasse );
+
+
+		        /* Création de l'objet gérant les requêtes */
+		        statement2 = (Statement) connexion2.createStatement();
+
+
+		        /* Exécution d'une requête de lecture */
+		        resultat = statement2.executeQuery( "SELECT idmaison FROM maison WHERE ville='"+ville+"';" );
+		        
+		        while ( resultat.next() ) {
+		        
+		        	String id=resultat.getString("idmaison");
+		        	
+		        id_maison.add(id);}
+		           
+		        } catch ( SQLException e ) {
+		      
+		    } finally {
+
+		        if ( resultat != null ) {
+		            try {
+		                resultat.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( statement2 != null ) {
+		            try {
+		                statement2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( connexion2 != null ) {
+		            try {
+		                connexion2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+		    }
+
+			return id_maison;
 	}
 }

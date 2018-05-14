@@ -1,4 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.IOException" %>
+
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
@@ -34,11 +38,14 @@
 			</div>
 		</div>
 	</nav>
+	
 	<div class="container">
 		<div class="col-md-12">
+		<% ArrayList<String> id_maison = (ArrayList<String>)session.getAttribute("id_maison");%>
 			<h1 style="text-align:center;">Vos Resultats de recherche :</h1>
+			
 			  <c:forEach items="${ messages2 }" var="messages2" varStatus="boucle">
-            <p> ${ messages2 }</p>
+            <p> ${ messages2 } <a href="recherche?num=<%= id_maison.remove(0) %>">Lien</a> </p>
         </c:forEach>
 		</div>
 		<div>

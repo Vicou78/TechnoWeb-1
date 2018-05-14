@@ -25,20 +25,28 @@ public class Recherche extends HttpServlet {
     }*/
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+		 HttpSession session = request.getSession();
+		 String num = request.getParameter("num");
+		  session.setAttribute("id_choisi", num);
+		 
+		this.getServletContext().getRequestDispatcher("/page_maison.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/plain");
+		 HttpSession session = request.getSession();
+		
         Maison maison = new Maison();
+
 		String depart = request.getParameter("depart");
         String arrivee = request.getParameter("arrivee");
         String ville = request.getParameter("country");
         List<String> messages2 =maison.Correspond(request, depart,arrivee,ville);
+        ArrayList<String> id_maison =(ArrayList<String>) maison.Cherche_id(request,ville);
+        session.setAttribute("id_maison", id_maison);
         request.setAttribute( ATT_MESSAGES2, messages2 );
-        System.out.println(messages2);
+        System.out.println(id_maison);
         this.getServletContext().getRequestDispatcher("/results_maison.jsp" ).forward( request, response );
        
 	}

@@ -170,12 +170,13 @@ public class Maison {
 
 
 		        /* Exécution d'une requête de lecture */
-		        resultat = statement2.executeQuery( "SELECT idmaison FROM maison WHERE ville='"+ville+"';" );
+		        resultat = statement2.executeQuery( "SELECT idmaison, img_maison FROM maison WHERE ville='"+ville+"';" );
 		        
 		        while ( resultat.next() ) {
 		        
 		        	String id=resultat.getString("idmaison");
-		        	
+		        	String img=resultat.getString("img_maison");
+		        id_maison.add(img);
 		        id_maison.add(id);}
 		           
 		        } catch ( SQLException e ) {
@@ -228,17 +229,21 @@ public class Maison {
 
 
 		        /* Exécution d'une requête de lecture */
-		        resultat = statement2.executeQuery( "SELECT id_utilisateur, nom_maison, description, img_maison FROM maison WHERE idmaison='"+num+"';" );
+		        resultat = statement2.executeQuery( "SELECT id_utilisateur, nom_maison, description, img_maison, debut, fin FROM maison WHERE idmaison='"+num+"';" );
 		        
 		        while ( resultat.next() ) {
 		        	String id_utilisateur=resultat.getString("id_utilisateur");
 		        	String nom_maison=resultat.getString("nom_maison");
 		        	String description=resultat.getString("description");
 		        	String img_maison=resultat.getString("img_maison");
+		        	String debut=resultat.getString("debut");
+		        	String fin=resultat.getString("fin");
 		        info_maison.add(img_maison);
 		        info_maison.add(id_utilisateur);
 		        info_maison.add(nom_maison);
 		        info_maison.add(description);
+		        info_maison.add(debut);
+		        info_maison.add(fin);
 		        }
 		           
 		        } catch ( SQLException e ) {

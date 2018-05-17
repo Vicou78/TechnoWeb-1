@@ -45,7 +45,7 @@
 			<h1 style="text-align:center;">Vos Resultats de recherche :</h1>
 			
 			  <c:forEach items="${ messages2 }" var="messages2" varStatus="boucle">
-            <p> ${ messages2 } <a href="recherche?num=<%= id_maison.remove(0) %>">Lien</a> </p>
+            <p><img src="img/<%= id_maison.remove(0) %>" width="80" height="80" alt="Photo de maison" /> ${ messages2 } <a href="recherche?num=<%= id_maison.remove(0) %>">Lien</a> </p>
         </c:forEach>
 		</div>
 		<div>

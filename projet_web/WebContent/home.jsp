@@ -17,7 +17,7 @@
 
 
 </head>
-<body>
+<body style="background-color:#F7F7F7;">
 <jsp:include page="header.jsp"/>
 	<div class="container">
 		<div class="col-md-12">

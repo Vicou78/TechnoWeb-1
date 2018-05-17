@@ -26,7 +26,7 @@
   <a href="/projet_web/Connexion" accesskey="1">Déconnexion</a>
 </div>
 
-<div class="container" style="margin:0;padding:10px;;width:100%;background-color:grey;">
+<div class="container" style="margin:0;padding:10px;;width:100%;background-color:#B2E3F2;">
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span> <span style="font-size:30px;margin-left:20px;">Bienvenue ${ info_user }</span>
 </div>
 <script>

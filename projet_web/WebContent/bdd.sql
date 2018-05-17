@@ -28,6 +28,7 @@ CREATE TABLE `maison` (
   `ville` varchar(45) NOT NULL,
   `nom_maison` varchar(45) NOT NULL,
   `description` varchar(200) NOT NULL,
+  `img_maison` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`idmaison`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -38,7 +39,7 @@ CREATE TABLE `maison` (
 
 LOCK TABLES `maison` WRITE;
 /*!40000 ALTER TABLE `maison` DISABLE KEYS */;
-INSERT INTO `maison` VALUES (1,1,'Paris','Maison_1_Paris','Une maison près de Paris'),(2,1,'Paris','Maison_2','Une maison près de Paris 2'),(3,1,'New_York','Maison 1','Une maison près de NYC'),(4,1,'Paray','Maison 1','Une maison près de Paray'),(5,1,'Poney','Maison 1','Une maison près de Poneys poilus'),(6,2,'Paris','Maison 3 Paris','Maison de plus à Montparnasse');
+INSERT INTO `maison` VALUES (1,1,'Paris','Maison_1_Paris','Une maison près de Paris','/maison1.jpg'),(2,1,'Paris','Maison_2','Une maison près de Paris 2','/maison2.jpg'),(3,1,'New_York','Maison 1','Une maison près de NYC','/maison3.jpg'),(4,1,'Paray','Maison 1','Une maison près de Paray','/maison5.jpg'),(5,1,'Poney','Maison 1','Une maison près de Poneys poilus','/maison6.jpg'),(6,2,'Paris','Maison 3 Paris','Maison de plus à Montparnasse','/maison4.jpg');
 /*!40000 ALTER TABLE `maison` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -79,4 +80,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-17  8:40:05
+-- Dump completed on 2018-05-17 10:44:05

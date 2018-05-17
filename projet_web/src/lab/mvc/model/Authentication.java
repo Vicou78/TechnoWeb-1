@@ -36,7 +36,7 @@ public class Authentication implements Serializable{
 	
 	  public static String url = "jdbc:mysql://localhost:3306/site";
 	  public static String utilisateur = "root";
-	  public static	 String motDePasse = "tanguy";
+	  public static	 String motDePasse = "jenk1000";
 	  public static Connection connexion2 = null;
 	  public static Statement statement2 = null;
 	  public static ResultSet resultat = null;

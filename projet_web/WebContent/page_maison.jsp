@@ -30,7 +30,7 @@
 			<h1 style="text-align:center;">MAISON CHOISIE</h1>
 			<% ArrayList<String> infos_maison = (ArrayList<String>)request.getAttribute("INF_MAISON");%>
 			<h2><%=session.getAttribute("id_choisi")%></h2>
-			<img src="img/<%= infos_maison.remove(0) %>"  alt="Photo de maison" />
+			<img src="img/<%= infos_maison.remove(0) %>" width="350" height="300" alt="Photo de maison" />
 			<h2>Informations sur le propriétaire : <%= infos_maison.remove(0) %></h2>
 			<h2>Ville : <%= infos_maison.remove(0) %></h2>
 			<h2>Description : <%= infos_maison.remove(0) %></h2>

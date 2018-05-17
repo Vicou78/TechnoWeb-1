@@ -30,8 +30,6 @@ String erreur = (String) request.getAttribute("erreur");
 
 if (erreur != null) { %>
 
-<strong>Erreur, les identifiants ne sont pas corrects </strong>
-
 <%
 } %>
 <nav class="navbar navbar-default">   

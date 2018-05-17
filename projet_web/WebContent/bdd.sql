@@ -16,6 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `maison`
+--
+
+DROP TABLE IF EXISTS `maison`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `maison` (
+  `idmaison` int(11) NOT NULL AUTO_INCREMENT,
+  `id_utilisateur` int(11) NOT NULL,
+  `ville` varchar(45) NOT NULL,
+  `nom_maison` varchar(45) NOT NULL,
+  `description` varchar(200) NOT NULL,
+  PRIMARY KEY (`idmaison`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `maison`
+--
+
+LOCK TABLES `maison` WRITE;
+/*!40000 ALTER TABLE `maison` DISABLE KEYS */;
+INSERT INTO `maison` VALUES (1,1,'Paris','Maison_1_Paris','Une maison près de Paris'),(2,1,'Paris','Maison_2','Une maison près de Paris 2'),(3,1,'New_York','Maison 1','Une maison près de NYC'),(4,1,'Paray','Maison 1','Une maison près de Paray'),(5,1,'Poney','Maison 1','Une maison près de Poneys poilus'),(6,2,'Paris','Maison 3 Paris','Maison de plus à Montparnasse');
+/*!40000 ALTER TABLE `maison` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `utilisateur`
 --
 
@@ -52,4 +79,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-05-03 12:04:52
+-- Dump completed on 2018-05-17  8:40:05

@@ -19,6 +19,7 @@ public class Recherche extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     public static final String ATT_MESSAGES2 = "messages2";
 
+
     /*public Login() {
         super();Failed with error: unable to access 'https://github.com/Thoreuxyohan/TechnoWeb.git/': The requested URL returned error: 403
         // TODO Auto-generated constructor stub
@@ -28,7 +29,10 @@ public class Recherche extends HttpServlet {
 		 HttpSession session = request.getSession();
 		 String num = request.getParameter("num");
 		  session.setAttribute("id_choisi", num);
-		 
+		  Maison maison2 = new Maison();
+	  List<String> messages_maison =maison2.recupInfos(request, num);
+	  System.out.println(messages_maison);
+		  request.setAttribute( "INF_MAISON", messages_maison );
 		this.getServletContext().getRequestDispatcher("/page_maison.jsp").forward(request, response);
 	}
 

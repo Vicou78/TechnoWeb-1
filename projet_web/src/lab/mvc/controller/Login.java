@@ -24,8 +24,23 @@ public class Login extends HttpServlet {
     }*/
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String session_en_cours = "";
+		try {
+			session_en_cours = session.getAttribute("session").toString();
+        } catch (Throwable e) {
+        	session_en_cours = "off";
+        }
+		//String session_en_cours = session.getAttribute("session").toString();
+		// si il y a une session en cours et qu'on clique sur "deco" on arrive sur goodbye.jsp
+		if(session_en_cours.equals("on")){
+			session.setAttribute("session", "off");
+			this.getServletContext().getRequestDispatcher("/goodbye.jsp").forward(request, response);
+		}		//on arrive sur login.jsp
+		session.setAttribute("session", "off");
 		this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+		//this.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,8 +52,11 @@ public class Login extends HttpServlet {
         boolean reserv=Authentication.Authentic(request, user,pass);
         if(reserv) {
         	System.out.println("boucle");
+        	List<String> infoUtilisateur = Authentication.infoUser(request, user,pass);
+        	System.out.println(infoUtilisateur);
+        	request.setAttribute( "info_user", infoUtilisateur.get(0) );
+        	session.setAttribute("session", "on");
         	getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
-        	 session.setAttribute("session", "on");
         }
         else {
         	/*plutot que de renvoyer vers une page error.jsp, autant rappeler index en indiquant une erreur de connexion*/

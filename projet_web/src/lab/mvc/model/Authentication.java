@@ -36,7 +36,7 @@ public class Authentication implements Serializable{
 	
 	  public static String url = "jdbc:mysql://localhost:3306/site";
 	  public static String utilisateur = "root";
-	  public static	 String motDePasse = "jenk1000";
+	  public static	 String motDePasse = "tanguy";
 	  public static Connection connexion2 = null;
 	  public static Statement statement2 = null;
 	  public static ResultSet resultat = null;
@@ -170,5 +170,65 @@ public class Authentication implements Serializable{
 		    return false;
 		}
 	
-	
+	   public static List<String> infoUser( HttpServletRequest request, String user,String pass) {
+		    List<String> messagesInfo = new ArrayList<String>();
+		    /* Chargement du driver JDBC pour MySQL */
+		    try {
+
+		        Class.forName( "com.mysql.jdbc.Driver" );
+
+		    } catch ( ClassNotFoundException e ) {
+		                e.getMessage();
+		    }
+
+
+		    try {
+
+		        connexion2 = (Connection) DriverManager.getConnection( url, utilisateur, motDePasse );
+
+
+		        /* Création de l'objet gérant les requêtes */
+		        statement2 = (Statement) connexion2.createStatement();
+
+
+		        /* Exécution d'une requête de lecture */
+		        resultat = statement2.executeQuery( "SELECT nom, prenom FROM utilisateur where username ='"+user+"' and password ='"+pass+"';" );
+
+		        while ( resultat.next() ) {
+		        	String nomUtilisateur = resultat.getString( "nom" );
+	                String prenomUtilisateur = resultat.getString( "prenom" );
+	                messagesInfo.add(nomUtilisateur + " " +prenomUtilisateur);
+		        			}
+		           
+		        
+		    } catch ( SQLException e ) {
+		      
+		    } finally {
+
+		        if ( resultat != null ) {
+		            try {
+		                resultat.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( statement2 != null ) {
+		            try {
+		                statement2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( connexion2 != null ) {
+		            try {
+		                connexion2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+		    }
+		    return messagesInfo;
+		}
+	   
+	   
+	   
 }

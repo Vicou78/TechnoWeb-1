@@ -1,3 +1,8 @@
+<% if(session.getAttribute("session")!="on"){
+
+%><jsp:forward page="/home.jsp" />
+<%
+}%>
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
@@ -20,7 +25,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">BIENVENUE</a>
+				<a class="navbar-brand" href="#">BIENVENUE ${ info_user }</a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -28,6 +33,7 @@
 					<li> <a href="#">Nous contacter</a> </li>
 					<li> <a href="#">Paramètre</a> </li>
 					<li> <a href="#">Partenaires</a> </li>
+					<li> <a href="/projet_web/Connexion" accesskey="1" style="font-size: 20px;">Déconnexion</a> </li>
 				</ul>
 
 			</div>

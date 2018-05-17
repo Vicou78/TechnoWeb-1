@@ -1,3 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.IOException" %>
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
@@ -24,7 +28,12 @@
 	<div class="container">
 		<div class="col-md-12">
 			<h1 style="text-align:center;">MAISON CHOISIE</h1>
+			<% ArrayList<String> infos_maison = (ArrayList<String>)request.getAttribute("INF_MAISON");%>
 			<h2><%=session.getAttribute("id_choisi")%></h2>
+			<img src="img/<%= infos_maison.remove(0) %>"  alt="Photo de maison" />
+			<h2>Informations sur le propriétaire : <%= infos_maison.remove(0) %></h2>
+			<h2>Ville : <%= infos_maison.remove(0) %></h2>
+			<h2>Description : <%= infos_maison.remove(0) %></h2>
 		</div>
 	</div>
 <jsp:include page="footer.jsp"/>

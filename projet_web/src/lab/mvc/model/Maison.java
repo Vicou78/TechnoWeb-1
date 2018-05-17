@@ -206,4 +206,67 @@ public class Maison {
 
 			return id_maison;
 	}
+	public List<String> recupInfos(HttpServletRequest request, String num) {
+		// TODO Auto-generated method stub
+		 ArrayList<String> info_maison = new ArrayList<String>();
+			try {
+
+		        Class.forName( "com.mysql.jdbc.Driver" );
+
+		    } catch ( ClassNotFoundException e ) {
+		                e.getMessage();
+		    }
+
+
+		    try {
+
+		        connexion2 = (Connection) DriverManager.getConnection( url, utilisateur, motDePasse );
+
+
+		        /* Création de l'objet gérant les requêtes */
+		        statement2 = (Statement) connexion2.createStatement();
+
+
+		        /* Exécution d'une requête de lecture */
+		        resultat = statement2.executeQuery( "SELECT id_utilisateur, nom_maison, description, img_maison FROM maison WHERE idmaison='"+num+"';" );
+		        
+		        while ( resultat.next() ) {
+		        	String id_utilisateur=resultat.getString("id_utilisateur");
+		        	String nom_maison=resultat.getString("nom_maison");
+		        	String description=resultat.getString("description");
+		        	String img_maison=resultat.getString("img_maison");
+		        info_maison.add(img_maison);
+		        info_maison.add(id_utilisateur);
+		        info_maison.add(nom_maison);
+		        info_maison.add(description);
+		        }
+		           
+		        } catch ( SQLException e ) {
+		      
+		    } finally {
+
+		        if ( resultat != null ) {
+		            try {
+		                resultat.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( statement2 != null ) {
+		            try {
+		                statement2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( connexion2 != null ) {
+		            try {
+		                connexion2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+		    }
+
+			return info_maison;
+	}
 }

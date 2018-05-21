@@ -1,8 +1,10 @@
 package lab.mvc.model;
 
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class Maison {
 	
 	  public static String url = "jdbc:mysql://localhost:3306/site";
 	  public static String utilisateur = "root";
-	  public static	 String motDePasse = "tanguy";
+	  public static	 String motDePasse = "jenk1000";
 	  public static Connection connexion2 = null;
 	  public static Statement statement2 = null;
 	  public static ResultSet resultat = null;
@@ -111,14 +113,17 @@ public class Maison {
 
 
 	        /* Exécution d'une requête de lecture */
-	        resultat = statement2.executeQuery( "SELECT nom_maison, description FROM maison WHERE ville='"+ville+"';" );
+	        resultat = statement2.executeQuery( "SELECT nom_maison, debut, fin FROM maison WHERE ville='"+ville+"' AND debut <= '"+arrivee+"'AND fin >= '"+depart+"';" );
 	        
 	        while ( resultat.next() ) {
 	        
 	        	String nom_maison=resultat.getString("nom_maison");
-	        	String description=resultat.getString("description");
+
+	        	Date dep=resultat.getDate("debut");
+	        	Date arr=resultat.getDate("fin");
+	        	SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
 	        	
-	        messages2.add("Une maison est disponible dans la ville "+ville+", son nom est "+nom_maison+" et voici sa description :"+description);}
+	        messages2.add("Une maison est disponible dans la ville "+ville+", son nom est "+nom_maison+" disponible du "+sdf1.format(dep)+" au "+sdf1.format(arr));}
 	           
 	        } catch ( SQLException e ) {
 	      

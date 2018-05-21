@@ -3,6 +3,7 @@ package lab.mvc.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lab.mvc.model.Maison;
+import lab.mvc.model.Dates;
 @WebServlet("/recherche")
 public class Recherche extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,10 +30,13 @@ public class Recherche extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 HttpSession session = request.getSession();
 		 String num = request.getParameter("num");
+
+		
 		  session.setAttribute("id_choisi", num);
 		  Maison maison2 = new Maison();
 	  List<String> messages_maison =maison2.recupInfos(request, num);
 	  System.out.println(messages_maison);
+
 		  request.setAttribute( "INF_MAISON", messages_maison );
 		this.getServletContext().getRequestDispatcher("/page_maison.jsp").forward(request, response);
 	}
@@ -42,17 +47,25 @@ public class Recherche extends HttpServlet {
 		 HttpSession session = request.getSession();
 		
         Maison maison = new Maison();
-
 		String depart = request.getParameter("depart");
         String arrivee = request.getParameter("arrivee");
         String ville = request.getParameter("country");
+        if (Dates.isValid(depart, "yyyy-MM-dd")&& Dates.isValid(depart, "yyyy-MM-dd")) {
+        	
+        
         List<String> messages2 =maison.Correspond(request, depart,arrivee,ville);
         ArrayList<String> id_maison =(ArrayList<String>) maison.Cherche_id(request,ville);
         session.setAttribute("id_maison", id_maison);
         request.setAttribute( ATT_MESSAGES2, messages2 );
+        session.setAttribute("depart", depart);
+        session.setAttribute("arrivee", arrivee);
+
         System.out.println(id_maison);
         this.getServletContext().getRequestDispatcher("/results_maison.jsp" ).forward( request, response );
-       
+        }
+        else {
+        	this.getServletContext().getRequestDispatcher("/home.jsp" ).forward( request, response );
+        }
 	}
 
 }

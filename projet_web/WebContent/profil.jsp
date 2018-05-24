@@ -20,6 +20,66 @@
 </head>
 	<body>
 	<jsp:include page="header.jsp"/>
+	<div class="container">
+		<div class="col-sm-12" style="padding:0;margin-top:15px;">
+			<p style="text-align:center;font-size:20px;">Page de profil
+			</p>
+			<p style="text-align:center;font-size:15px;">Vous pouvez modifier vos données.
+			</p>
+		</div>
+		<div class="col-sm-12" style="padding:0;margin-top:15px;">
+		<form class="form-horizontal" action="Profil" name="Profil" method="post">
+			<div class="form-group">
+				<label class="col-sm-offset-2 col-sm-1 control-label">Nom:</label>
+				<div class="col-sm-6">
+	  				<div class="input-group">
+	    				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	    				<input id="nom_user_modif" type="text" class="form-control" name="nom_user_modif" placeholder="Nom" value="${ Nom_User }">
+	  				</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-offset-2 col-sm-1 control-label">Prenom:</label>
+				<div class="col-sm-6">
+	  				<div class="input-group">
+	    				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	    				<input id="prenom_user_modif" type="text" class="form-control" name="prenom_user_modif" placeholder="prenom" value="${ Prenom_User }">
+	  				</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-offset-2 col-sm-1 control-label">E-mail:</label>
+				<div class="col-sm-6">
+	  				<div class="input-group">
+	    				<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+	    				<input id="mail_modif" type="text" class="form-control" name="mail_modif" placeholder="e-mail" value="${ mail }">
+	  				</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-offset-2 col-sm-1 control-label">Username:</label>
+				<div class="col-sm-6">
+	  				<div class="input-group">
+	    				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+	    				<input id="username_modif" type="text" class="form-control" name="username_modif" placeholder="username" value="${ Username }">
+	  				</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-sm-offset-2 col-sm-1 control-label">Password:</label>
+				<div class="col-sm-6">
+	  				<div class="input-group">
+	    				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+	    				<input id="password_modif" type="text" class="form-control" name="password_modif" placeholder="password" value="${ Password }">
+	  				</div>
+				</div>
+			</div>
+			<p style="text-align:center;">
+			<button type="submit" value="submit" class="btn btn-lg btn-warning" id="change_info" onclick="">Modifier vos données</button>
+			</p>
+			</form>
+		</div>
+	</div>
 	<jsp:include page="footer.jsp"/>
 	</body>
 </html>

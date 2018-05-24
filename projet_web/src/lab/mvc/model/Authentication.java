@@ -233,4 +233,136 @@ public class Authentication implements Serializable{
 	   
 	   
 	   
+	   
+	   public static List<String> infoprofil( HttpServletRequest request, String id_user) {
+		    List<String> messagesprofil = new ArrayList<String>();
+		    /* Chargement du driver JDBC pour MySQL */
+		    try {
+
+		        Class.forName( "com.mysql.jdbc.Driver" );
+
+		    } catch ( ClassNotFoundException e ) {
+		                e.getMessage();
+		    }
+
+
+		    try {
+
+		        connexion2 = (Connection) DriverManager.getConnection( url, utilisateur, motDePasse );
+
+
+		        /* Création de l'objet gérant les requêtes */
+		        statement2 = (Statement) connexion2.createStatement();
+
+
+		        /* Exécution d'une requête de lecture */
+		        resultat = statement2.executeQuery( "SELECT * FROM utilisateur where idutilisateur ='"+id_user+"';" );
+
+		        while ( resultat.next() ) {
+		        	String nomUtilisateur = resultat.getString( "nom" );
+	                String prenomUtilisateur = resultat.getString( "prenom" );
+	                String id_utilisateur = resultat.getString( "idutilisateur" );
+	                String mail = resultat.getString( "mail" );
+	                String username = resultat.getString( "username" );
+	                String password = resultat.getString( "password" );
+	                messagesprofil.add(nomUtilisateur);
+	                messagesprofil.add(prenomUtilisateur);
+	                messagesprofil.add(mail);
+	                messagesprofil.add(username);
+	                messagesprofil.add(password);
+		        			}
+		           
+		        
+		    } catch ( SQLException e ) {
+		      
+		    } finally {
+
+		        if ( resultat != null ) {
+		            try {
+		                resultat.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( statement2 != null ) {
+		            try {
+		                statement2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( connexion2 != null ) {
+		            try {
+		                connexion2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+		    }
+		    return messagesprofil;
+		}
+	   
+	   
+	   public static void Modifprofil( HttpServletRequest request, String id_user, String nom_user_modif, String prenom_user_modif, String mail_modif, String username_modif, String password_modif) {
+		    /* Chargement du driver JDBC pour MySQL */
+		    try {
+
+		        Class.forName( "com.mysql.jdbc.Driver" );
+
+		    } catch ( ClassNotFoundException e ) {
+		                e.getMessage();
+		    }
+
+
+		    try {
+
+		        connexion2 = (Connection) DriverManager.getConnection( url, utilisateur, motDePasse );
+
+
+		        /* Création de l'objet gérant les requêtes */
+		        statement2 = (Statement) connexion2.createStatement();
+
+
+		        /* Exécution d'une requête de lecture */
+		        //resultat = statement2.executeQuery( "SELECT * FROM utilisateur where idutilisateur ='"+id_user+"';" );
+		        String req = "UPDATE utilisateur SET nom ='"+nom_user_modif+"',prenom ='"+prenom_user_modif+"',mail ='"+mail_modif+"',username ='"+username_modif+"',password ='"+password_modif+"'  WHERE idutilisateur ='"+id_user+"';";
+		        PreparedStatement preparedStmt = (PreparedStatement) connexion2.prepareStatement(req);
+		        preparedStmt.executeUpdate();
+		        /*while ( resultat.next() ) {
+		        	String nomUtilisateur = resultat.getString( "nom" );
+	                String prenomUtilisateur = resultat.getString( "prenom" );
+	                String id_utilisateur = resultat.getString( "idutilisateur" );
+	                String mail = resultat.getString( "mail" );
+	                String username = resultat.getString( "username" );
+	                String password = resultat.getString( "password" );
+		        			}*/
+		           
+		        
+		    } catch ( SQLException e ) {
+		      
+		    } finally {
+
+		        if ( resultat != null ) {
+		            try {
+		                resultat.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( statement2 != null ) {
+		            try {
+		                statement2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+
+		        if ( connexion2 != null ) {
+		            try {
+		                connexion2.close();
+		            } catch ( SQLException ignore ) {
+		            }
+		        }
+		    }
+		}
+	   
+	   
 }

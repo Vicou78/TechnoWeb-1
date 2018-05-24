@@ -17,9 +17,10 @@
 			</div>
 		</div>
 	</nav>-->
-<div id="mySidenav" class="sidenav">
+<div id="mySidenav" class="sidenav" style="z-index:100;">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="/projet_web/Profil" accesskey="1">Mon Profil</a>
+  <a href="" accesskey="1">Home</a>
   <a href="#">Qui somme-nous</a>
   <a href="#">Nous Contacter</a>
     <a href="#">Mes Maisons</a>

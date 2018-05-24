@@ -30,6 +30,7 @@ public class Inscription extends HttpServlet {
         	List<String> infoUtilisateur = Authentication.infoUser(request, user,pass1);
         	System.out.println(infoUtilisateur);
         	request.setAttribute( "info_user", infoUtilisateur.get(0) );
+        	session.setAttribute( "id_user", infoUtilisateur.get(1) );
         	getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
    
         }

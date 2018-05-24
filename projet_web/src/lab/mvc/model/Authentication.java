@@ -192,12 +192,14 @@ public class Authentication implements Serializable{
 
 
 		        /* Exécution d'une requête de lecture */
-		        resultat = statement2.executeQuery( "SELECT nom, prenom FROM utilisateur where username ='"+user+"' and password ='"+pass+"';" );
+		        resultat = statement2.executeQuery( "SELECT nom, prenom, idutilisateur FROM utilisateur where username ='"+user+"' and password ='"+pass+"';" );
 
 		        while ( resultat.next() ) {
 		        	String nomUtilisateur = resultat.getString( "nom" );
 	                String prenomUtilisateur = resultat.getString( "prenom" );
+	                String id_utilisateur = resultat.getString( "idutilisateur" );
 	                messagesInfo.add(nomUtilisateur + " " +prenomUtilisateur);
+	                messagesInfo.add(id_utilisateur);
 		        			}
 		           
 		        

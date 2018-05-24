@@ -24,7 +24,6 @@
 			<h1 style="text-align:center;">Bienvenue sur notre joli site.</h1>
 		</div>
 		<div>
-		
 		<form action="recherche" name="recherche" method="post">
 		Veuillez entrer un nom de ville à rechercher :
 		de :

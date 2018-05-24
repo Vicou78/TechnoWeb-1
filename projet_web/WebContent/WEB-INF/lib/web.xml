@@ -29,4 +29,12 @@
 		<servlet-name>Recherche</servlet-name>
 		<url-pattern>/recherche</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>Profil</servlet-name>
+		<servlet-class>lab.mvc.controller.Profil</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Profil</servlet-name>
+		<url-pattern>/profil</url-pattern>
+	</servlet-mapping>
 	</web-app>

@@ -29,4 +29,12 @@
 		<servlet-name>Recherche</servlet-name>
 		<url-pattern>/recherche</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>MesMaison</servlet-name>
+		<servlet-class>lab.mvc.controller.MesMaisons</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>MesMaisons</servlet-name>
+		<url-pattern>/Maison</url-pattern>
+	</servlet-mapping>
 	</web-app>

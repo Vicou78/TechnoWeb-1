@@ -2,6 +2,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.io.IOException" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
 
 <!DOCTYPE html>
 <html style="height: 100%">
@@ -10,6 +12,7 @@
 	<title>Home</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/jquery.autocomplete.css" />
+	<link rel="stylesheet" type="text/css" href="css/header.css" />
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>	
 <script src="js/jquery.autocomplete.js"></script>
@@ -43,9 +46,15 @@
 		<div class="col-md-12">
 		<% ArrayList<String> id_maison = (ArrayList<String>)session.getAttribute("id_maison");%>
 			<h1 style="text-align:center;">Vos Resultats de recherche :</h1>
+			<% String DATE_FORMAT = "dd/MM/yyyy";
+		    SimpleDateFormat sdf2 = new SimpleDateFormat(DATE_FORMAT);
+		    SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		    String deb = sdf2.format(sdf1.parse((String)session.getAttribute("depart")));
+		    String fin = sdf2.format(sdf1.parse((String)session.getAttribute("arrivee")));%>
+			<h2 style="text-align:center;">Du <%=deb %>  au <%=fin %>:</h2>
 			
 			  <c:forEach items="${ messages2 }" var="messages2" varStatus="boucle">
-            <p> ${ messages2 } <a href="recherche?num=<%= id_maison.remove(0) %>">Lien</a> </p>
+            <p><img src="img/<%= id_maison.remove(0) %>" width="80" height="80" alt="Photo de maison" /> ${ messages2 } <a href="recherche?num=<%= id_maison.remove(0) %>">Lien</a> </p>
         </c:forEach>
 		</div>
 		<div>

@@ -36,7 +36,7 @@ public class Authentication implements Serializable{
 	
 	  public static String url = "jdbc:mysql://localhost:3306/site";
 	  public static String utilisateur = "root";
-	  public static	 String motDePasse = "jenk1000";
+	  public static	 String motDePasse = "tanguy";
 	  public static Connection connexion2 = null;
 	  public static Statement statement2 = null;
 	  public static ResultSet resultat = null;
@@ -192,12 +192,14 @@ public class Authentication implements Serializable{
 
 
 		        /* Exécution d'une requête de lecture */
-		        resultat = statement2.executeQuery( "SELECT nom, prenom FROM utilisateur where username ='"+user+"' and password ='"+pass+"';" );
+		        resultat = statement2.executeQuery( "SELECT nom, prenom, idutilisateur FROM utilisateur where username ='"+user+"' and password ='"+pass+"';" );
 
 		        while ( resultat.next() ) {
 		        	String nomUtilisateur = resultat.getString( "nom" );
 	                String prenomUtilisateur = resultat.getString( "prenom" );
+	                String id_utilisateur = resultat.getString( "idutilisateur" );
 	                messagesInfo.add(nomUtilisateur + " " +prenomUtilisateur);
+	                messagesInfo.add(id_utilisateur);
 		        			}
 		           
 		        

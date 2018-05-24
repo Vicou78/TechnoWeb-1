@@ -1,6 +1,7 @@
 package lab.mvc.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,8 +26,13 @@ public class Inscription extends HttpServlet {
         HttpSession session = request.getSession();
         if(pass1.equals(pass2)) {
         	Authentication.Inscription(request,name,prenom,mail,user, pass1);
-        	getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
        	 session.setAttribute("session", "on");
+        	List<String> infoUtilisateur = Authentication.infoUser(request, user,pass1);
+        	System.out.println(infoUtilisateur);
+        	request.setAttribute( "info_user", infoUtilisateur.get(0) );
+        	session.setAttribute( "id_user", infoUtilisateur.get(1) );
+        	getServletContext().getRequestDispatcher("/home.jsp").forward(request, response);
+   
         }
 
         else {

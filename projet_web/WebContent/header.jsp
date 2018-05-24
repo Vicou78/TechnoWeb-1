@@ -20,10 +20,10 @@
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="/projet_web/Profil" accesskey="1">Mon Profil</a>
-  <a href="#">Qui somme-nous</a>
-  <a href="#">Nous Contacter</a>
-    <a href="#">Mes Maisons</a>
-  <a href="#">Paramètres</a>
+  <a href="/projet_web/QuiSommeNous" accesskey="2">Qui somme-nous</a>
+  <a href="/projet_web/Contacter" accesskey="3">Nous Contacter</a>
+    <a href="/projet_web/MesMaisons" accesskey="4">Mes Maisons</a>
+  <a href="/projet_web/Parametres" accesskey="5">Paramètres</a>
 
   <a href="/projet_web/Connexion" accesskey="1">Déconnexion</a>
 </div>

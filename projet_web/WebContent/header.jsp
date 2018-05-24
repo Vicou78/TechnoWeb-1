@@ -19,11 +19,12 @@
 	</nav>-->
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Mon Profil</a>
+  <a href="/projet_web/Profil" accesskey="1">Mon Profil</a>
   <a href="#">Qui somme-nous</a>
   <a href="#">Nous Contacter</a>
     <a href="#">Mes Maisons</a>
   <a href="#">Paramètres</a>
+
   <a href="/projet_web/Connexion" accesskey="1">Déconnexion</a>
 </div>
 

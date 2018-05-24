@@ -3,6 +3,7 @@
 %><jsp:forward page="/home.jsp" />
 <%
 }%>
+
 <!DOCTYPE html>
 <html style="height: 100%">
 <head>
@@ -17,34 +18,8 @@
 
 
 </head>
-<body style="background:url('image_appart1.jpg') fixed no-repeat">
-<jsp:include page="header.jsp"/>
-	<div class="container">
-		<div class="col-md-12">
-			<h1 style="text-align:center;">Bienvenue sur notre joli site.</h1>
-		</div>
-		<div>
-		<form action="recherche" name="recherche" method="post">
-		Veuillez entrer un nom de ville à rechercher :
-		de :
-		<input type="date" name="depart">
-		 à:
-		 <input type="date" name="arrivee">
-		dans la ville :
-			<input type="text" id="country" name="country"/>
-			
-			      
-			        <button type="submit" class="btn btn-default" data-dismiss="modal">Chercher</button>
-			      
-	</form>
-	<script>
-		$("#country").autocomplete("getdata.jsp");
-	</script>
-			
-			
-			
-		</div>
-	</div>
-<jsp:include page="footer.jsp"/>
-</body>
+	<body>
+	<jsp:include page="header.jsp"/>
+	<jsp:include page="footer.jsp"/>
+	</body>
 </html>
